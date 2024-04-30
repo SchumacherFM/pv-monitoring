@@ -1,0 +1,161 @@
+# config from issue https://github.com/evcc-io/evcc/issues/6213
+
+network:
+  # schema is the HTTP schema
+  # setting to `https` does not enable https, it only changes the way URLs are generated
+  schema: http
+
+  # host is the hostname or IP address
+  # if the host name contains a `.local` suffix, the name will be announced on MDNS
+  # docker: MDNS announcements don't work. Host must be set to the docker host's name
+  #host: evcc.local
+  host: 0.0.0.0
+
+  # port is the listening port for UI and api
+  # evcc will listen on all available interfaces
+  port: 7070
+
+  # per default, evcc should be available at http://evcc.local:7070
+
+interval: 30s # control cycle interval
+log: info
+
+meters:
+  # meter definitions
+  # name can be freely chosen and is used as reference when assigning meters to site and loadpoints
+  # for examples see https://github.com/evcc-io/config#meters
+  - type: custom
+    name: PVErzeugung
+    power:
+      source: http
+      uri: http://192.168.78.10:8080/rest/items/KOS_PVPower
+      method: GET
+      headers:
+        - content-type: application/json
+      jq: .state|split(" ")[0]|split(".")[0]
+  - type: custom
+    name: Netzbezug
+    power:
+      source: http
+      uri: http://192.168.78.10:8080/rest/items/KOS_HomeConsumptionGrid
+      method: GET
+      headers:
+        - content-type: application/json
+      jq: .state|split(" ")[0]|split(".")[0]
+      scale: 1
+  - type: custom
+    name: BYD10
+    power:
+      source: http
+      uri: http://192.168.78.10:8080/rest/items/KOS_BatteryChargeDischarge
+      method: GET
+      headers:
+        - content-type: application/json
+      jq: .state|split(" ")[0]|split(".")[0]
+      scale: 1
+    soc:
+      source: http
+      uri: http://192.168.78.10:8080/rest/items/KOS_BatterySoC
+      method: GET
+      headers:
+        - content-type: application/json
+      jq: .state|split(" ")[0]|split(".")[0]
+
+chargers:
+  # charger definitions
+  # name can be freely chosen and is used as reference when assigning charger to vehicle
+  # for examples see https://github.com/evcc-io/config#chargers
+  - type: template
+    template: tinkerforge-warp
+    fw2: true
+    host: 192.168.78.18
+    port: 1883
+    topic: devices/Warp2
+    timeout: 30s
+    name: WarpWallbox
+
+vehicles:
+  # vehicle definitions
+  # name can be freely chosen and is used as reference when assigning vehicle to loadpoint
+  # for examples see https://github.com/evcc-io/config#vehicles
+  - name: 500e
+    type: template
+    template: offline
+    title: Fiat 500e
+    capacity: 22
+  - name: EV6
+    type: custom
+    title: Kia EV6 # display name for UI
+    capacity: 77 # byttery capacity (kWh)
+    soc: # battery soc (%)
+      source: http
+      uri: http://192.168.78.10:8080/rest/items/EV6_batteryStatus
+      method: GET
+      headers:
+        - content-type: application/json
+      jq: .state|split(" ")[0]|split(".")[0]
+    range: # optional electric range (km)
+      source: http
+      uri: http://192.168.78.10:8080/rest/items/EV6_availableRange
+      method: GET
+      headers:
+        - content-type: application/json
+      jq: .state|split(" ")[0]|split(".")[0]
+    status: # FahrzeugStatus (%)
+      source: http
+      uri: http://192.168.78.10:8080/rest/items/EV6_vehicleStatus
+      method: GET
+      headers:
+        - content-type: application/json
+      jq: .state|split(" ")[0]|split(".")[0]
+    onIdentify: # set defaults when vehicle is identified
+      mode: pv
+      minSoC: 25
+      targetSoC: 80
+
+tariffs:
+  # tariffs are the fixed or variable tariffs
+  # cheap (tibber/awattar) can be used to define a tariff rate considered cheap enough for charging
+  currency: EUR # (default EUR)
+  grid:
+    #type: fixed
+    #price: 0.319 # [currency]/kWh
+    type: tibber
+    cheap: 0.25
+    token: "xxx"
+    homeid: "yyy"
+  feedin:
+    type: fixed
+    price: 0.065 # [currency]/kWh
+
+loadpoints:
+  # loadpoint describes the charger, charge meter and connected vehicle
+  - title: Warp
+    charger: WarpWallbox
+    mode: pv
+    phases: 3
+    mincurrent: 6
+    maxcurrent: 16
+    resetOnDisconnect: true
+    vehicle: 500e
+
+site:
+  # site describes the EVU connection, PV and home battery
+  title: Zuhause
+  meters:
+    grid: Netzbezug
+    pvs:
+      - PVErzeugung
+    batteries:
+      - BYD10
+  prioritySoC: 66
+  bufferSoC: 75
+  residualPower: 600
+
+mqtt:
+  broker: 192.168.78.18:1883
+  topic: servers/evcc
+
+# sponsor token enables optional features (request at https://cloud.evcc.io)
+sponsortoken: xxxx
+plant: yyyy

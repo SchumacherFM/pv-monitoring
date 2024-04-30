@@ -1,0 +1,66 @@
+# REST api, use 127.0.0.1 to restrict to localhost
+api: 0.0.0.0:7071
+rate: 8s # time.Duration
+
+# mqtt config
+#mqtt:
+#  broker: localhost:1883
+#  topic: mbmd
+#  user:
+#  password:
+#  clientid: mbmd
+#  qos: 0
+#  homie: homie
+
+## influxdb_v2 config
+#influx:
+#  url: http://localhost:8086
+#  database: data
+#  measurement: mbmd
+#  organization:
+#  token:
+
+# adapters are referenced by device
+adapters:
+    - device: evcc:8502
+      rtu: false
+#    - device: evcc:8503 # ABBTerra
+#      rtu: false
+#- device: /dev/ttyUSB0
+#  baudrate: 9600
+#  comset: 8N1 # "8E1" needs be quoted as string or will error
+#- device: 192.168.0.7:23
+#  rtu: true # Modbus RS485 to Ethernet converter uses RTU over TCP
+
+# list of devices
+devices:
+#- name: sdm1
+#  type: sdm
+#  id: 1
+#  adapter: /dev/ttyUSB0
+#- name: sdm2
+#  type: sdm
+#  id: 1
+#  adapter: 192.168.0.7:23
+- name: se10kpv
+  type: sunspec
+  id: 1
+  subdevice: 0 # use subdevice to access SunSpec subdevices
+  adapter: evcc:8502
+- name: se17kpv
+  type: sunspec
+  id: 3
+  subdevice: 0 # use subdevice to access SunSpec subdevices
+  adapter: evcc:8502
+- name: se10kgrid
+  type: sunspec
+  id: 1
+  subdevice: 1 # use subdevice to access SunSpec subdevices
+  adapter: evcc:8502
+#- name: ABBTerra
+#  type: ABB
+#  id: 1
+#  adapter: evcc:8503
+
+prometheus:
+    enable: true # enables prometheus in general

@@ -1,0 +1,259 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "id": 19,
+  "links": [
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": false,
+      "title": "Heute",
+      "tooltip": "",
+      "type": "link",
+      "url": "/d/MRHnynkRz/pv-today-mobile?orgId=1&refresh=10s&from=now%2Fd&to=now%2Fd"
+    },
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": false,
+      "title": "Gestern",
+      "tooltip": "",
+      "type": "link",
+      "url": "/d/MRHnynkRz/pv-today-mobile?orgId=1&from=now-1d%2Fd&to=now-1d%2Fd"
+    },
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": false,
+      "title": "Vorgestern",
+      "tooltip": "",
+      "type": "link",
+      "url": "/d/MRHnynkRz/pv-today-mobile?orgId=1&from=now-2d%2Fd&to=now-2d%2Fd"
+    },
+    {
+      "asDropdown": true,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [
+        "PV"
+      ],
+      "targetBlank": false,
+      "title": "•••",
+      "tooltip": "",
+      "type": "dashboards",
+      "url": ""
+    }
+  ],
+  "liveNow": true,
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 39,
+      "panels": [],
+      "title": "Aktuell",
+      "type": "row"
+    },
+    {
+      "gridPos": {
+        "h": 4,
+        "w": 24,
+        "x": 0,
+        "y": 1
+      },
+      "id": 47,
+      "libraryPanel": {
+        "name": "PV/Netz Gauge",
+        "uid": "e6a7df33-9975-455f-b748-612244c8c186"
+      },
+      "title": ""
+    },
+    {
+      "gridPos": {
+        "h": 4,
+        "w": 24,
+        "x": 0,
+        "y": 5
+      },
+      "id": 49,
+      "libraryPanel": {
+        "name": "Speicher/Haus/Auto Gauge",
+        "uid": "f930b616-80c3-4485-98ee-0205a64c8260"
+      },
+      "title": ""
+    },
+    {
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 9
+      },
+      "id": 6,
+      "libraryPanel": {
+        "name": "Batteriestände",
+        "uid": "bel91qRRz"
+      },
+      "title": ""
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 11
+      },
+      "id": 37,
+      "panels": [],
+      "title": "Verlauf",
+      "type": "row"
+    },
+    {
+      "gridPos": {
+        "h": 15,
+        "w": 24,
+        "x": 0,
+        "y": 12
+      },
+      "id": 43,
+      "libraryPanel": {
+        "name": "PV Verbrauchsverlauf",
+        "uid": "rswX1qRRz"
+      },
+      "title": "PV Verbrauchsverlauf"
+    },
+    {
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 27
+      },
+      "id": 53,
+      "libraryPanel": {
+        "name": "Energieverteilung über Zeit",
+        "uid": "d9a5a952-0d17-428f-9102-19683b4e515f"
+      },
+      "title": ""
+    },
+    {
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 30
+      },
+      "id": 4,
+      "libraryPanel": {
+        "name": "Batterieverlauf",
+        "uid": "Blh9JqRRk"
+      },
+      "title": ""
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 37
+      },
+      "id": 35,
+      "panels": [],
+      "title": "Zusammenfassung",
+      "type": "row"
+    },
+    {
+      "gridPos": {
+        "h": 4,
+        "w": 24,
+        "x": 0,
+        "y": 38
+      },
+      "id": 51,
+      "libraryPanel": {
+        "name": "Kennzahlen",
+        "uid": "eca51e95-5c77-486f-9dc9-dc2ce025689a"
+      },
+      "title": ""
+    },
+    {
+      "gridPos": {
+        "h": 5,
+        "w": 22,
+        "x": 0,
+        "y": 42
+      },
+      "id": 18,
+      "libraryPanel": {
+        "name": "Energie",
+        "uid": "d-V6JqRgz"
+      },
+      "title": ""
+    }
+  ],
+  "refresh": "10s",
+  "revision": 1,
+  "schemaVersion": 39,
+  "tags": [
+    "PV"
+  ],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now/d",
+    "to": "now/d"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "10s",
+      "1m",
+      "1h"
+    ]
+  },
+  "timezone": "",
+  "title": "PV Today (Mobile)",
+  "uid": "MRHnynkRz",
+  "version": 1,
+  "weekStart": ""
+}

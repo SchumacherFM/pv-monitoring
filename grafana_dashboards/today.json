@@ -1,0 +1,381 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "id": 18,
+  "links": [
+    {
+      "asDropdown": false,
+      "icon": "dashboard",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": false,
+      "title": "Heute",
+      "tooltip": "",
+      "type": "link",
+      "url": "/d/7Ou-Y1Rgk/pv-today-tablet?orgId=1&from=now%2Fd&to=now%2Fd&refresh=10s"
+    },
+    {
+      "asDropdown": false,
+      "icon": "dashboard",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": false,
+      "title": "Gestern",
+      "tooltip": "",
+      "type": "link",
+      "url": "/d/7Ou-Y1Rgk/pv-today-tablet?orgId=1&from=now-1d%2Fd&to=now-1d%2Fd"
+    },
+    {
+      "asDropdown": false,
+      "icon": "dashboard",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": false,
+      "title": "Vorgestern",
+      "tooltip": "",
+      "type": "link",
+      "url": "/d/7Ou-Y1Rgk/pv-today-tablet?orgId=1&from=now-2d%2Fd&to=now-2d%2Fd"
+    },
+    {
+      "asDropdown": true,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [
+        "PV"
+      ],
+      "targetBlank": false,
+      "title": "Dashboards",
+      "tooltip": "",
+      "type": "dashboards",
+      "url": ""
+    },
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": true,
+      "title": "EVCC",
+      "tooltip": "",
+      "type": "link",
+      "url": "http://home:7070/"
+    }
+  ],
+  "liveNow": true,
+  "panels": [
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "blue",
+            "mode": "fixed"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "left",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 10
+              }
+            ]
+          },
+          "unit": "watt",
+          "unitScale": true
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Sun altitude"
+            },
+            "properties": [
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-yellow",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "dash": [
+                    10,
+                    10
+                  ],
+                  "fill": "dash"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "SE17K (West)"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "purple",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 20,
+        "x": 0,
+        "y": 0
+      },
+      "id": 46,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "alias": "SE10K (East)",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "fe0e3ffc-a3cc-4f86-b177-3c31875acf3b"
+          },
+          "query": "SELECT mean(\"value\") FROM \"pvPower\" WHERE  id = '1' AND value >0 AND $timeFilter GROUP BY time(1m) fill(none)",
+          "rawQuery": true,
+          "refId": "SE10K",
+          "resultFormat": "time_series"
+        },
+        {
+          "alias": "SE17K (West)",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "fe0e3ffc-a3cc-4f86-b177-3c31875acf3b"
+          },
+          "hide": false,
+          "query": "SELECT mean(\"value\") FROM \"pvPower\" WHERE  id = '2' AND value >0 AND $timeFilter GROUP BY time(1m) fill(none)",
+          "rawQuery": true,
+          "refId": "SE17K",
+          "resultFormat": "time_series"
+        },
+        {
+          "datasource": {
+            "type": "fetzerch-sunandmoon-datasource",
+            "uid": "f1ca04d4-092b-4d6d-b1de-7b75e3afe5d9"
+          },
+          "hide": false,
+          "refId": "A",
+          "target": [
+            "sun_altitude"
+          ]
+        }
+      ],
+      "title": "SE10K + SE17K and Sun Altitude",
+      "type": "timeseries"
+    },
+    {
+      "gridPos": {
+        "h": 9,
+        "w": 4,
+        "x": 20,
+        "y": 0
+      },
+      "id": 42,
+      "libraryPanel": {
+        "name": "Kennzahlen",
+        "uid": "eca51e95-5c77-486f-9dc9-dc2ce025689a"
+      },
+      "title": "Kennzahlen"
+    },
+    {
+      "gridPos": {
+        "h": 5,
+        "w": 7,
+        "x": 0,
+        "y": 9
+      },
+      "id": 35,
+      "libraryPanel": {
+        "name": "PV/Netz Gauge",
+        "uid": "e6a7df33-9975-455f-b748-612244c8c186"
+      },
+      "title": ""
+    },
+    {
+      "gridPos": {
+        "h": 15,
+        "w": 13,
+        "x": 7,
+        "y": 9
+      },
+      "id": 2,
+      "libraryPanel": {
+        "name": "PV Verbrauchsverlauf",
+        "uid": "rswX1qRRz"
+      },
+      "title": "PV Verbrauchsverlauf"
+    },
+    {
+      "gridPos": {
+        "h": 10,
+        "w": 4,
+        "x": 20,
+        "y": 9
+      },
+      "id": 40,
+      "libraryPanel": {
+        "name": "Energie",
+        "uid": "d-V6JqRgz"
+      },
+      "title": ""
+    },
+    {
+      "gridPos": {
+        "h": 5,
+        "w": 7,
+        "x": 0,
+        "y": 14
+      },
+      "id": 37,
+      "libraryPanel": {
+        "name": "Speicher/Haus/Auto Gauge",
+        "uid": "f930b616-80c3-4485-98ee-0205a64c8260"
+      },
+      "title": ""
+    },
+    {
+      "gridPos": {
+        "h": 8,
+        "w": 7,
+        "x": 0,
+        "y": 19
+      },
+      "id": 4,
+      "libraryPanel": {
+        "name": "Batterieverlauf",
+        "uid": "Blh9JqRRk"
+      },
+      "title": ""
+    },
+    {
+      "gridPos": {
+        "h": 3,
+        "w": 13,
+        "x": 7,
+        "y": 24
+      },
+      "id": 45,
+      "libraryPanel": {
+        "name": "Energieverteilung über Zeit",
+        "uid": "d9a5a952-0d17-428f-9102-19683b4e515f"
+      },
+      "title": ""
+    }
+  ],
+  "refresh": "10s",
+  "revision": 1,
+  "schemaVersion": 39,
+  "tags": [
+    "PV"
+  ],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now/d",
+    "to": "now/d"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "PV Today",
+  "uid": "7Ou-Y1Rgk",
+  "version": 12,
+  "weekStart": ""
+}
