@@ -92,10 +92,109 @@
   "liveNow": true,
   "panels": [
     {
+      "gridPos": {
+        "h": 5,
+        "w": 7,
+        "x": 0,
+        "y": 0
+      },
+      "id": 35,
+      "libraryPanel": {
+        "name": "PV/Netz Gauge",
+        "uid": "e6a7df33-9975-455f-b748-612244c8c186"
+      },
+      "title": ""
+    },
+    {
+      "gridPos": {
+        "h": 15,
+        "w": 13,
+        "x": 7,
+        "y": 0
+      },
+      "id": 2,
+      "libraryPanel": {
+        "name": "PV Verbrauchsverlauf",
+        "uid": "rswX1qRRz"
+      },
+      "title": "PV Verbrauchsverlauf"
+    },
+    {
+      "gridPos": {
+        "h": 9,
+        "w": 4,
+        "x": 20,
+        "y": 0
+      },
+      "id": 42,
+      "libraryPanel": {
+        "name": "Kennzahlen",
+        "uid": "eca51e95-5c77-486f-9dc9-dc2ce025689a"
+      },
+      "title": "Kennzahlen"
+    },
+    {
+      "gridPos": {
+        "h": 5,
+        "w": 7,
+        "x": 0,
+        "y": 5
+      },
+      "id": 37,
+      "libraryPanel": {
+        "name": "Speicher/Haus/Auto Gauge",
+        "uid": "f930b616-80c3-4485-98ee-0205a64c8260"
+      },
+      "title": ""
+    },
+    {
+      "gridPos": {
+        "h": 10,
+        "w": 4,
+        "x": 20,
+        "y": 9
+      },
+      "id": 40,
+      "libraryPanel": {
+        "name": "Energie",
+        "uid": "d-V6JqRgz"
+      },
+      "title": ""
+    },
+    {
+      "gridPos": {
+        "h": 8,
+        "w": 7,
+        "x": 0,
+        "y": 10
+      },
+      "id": 4,
+      "libraryPanel": {
+        "name": "Batterieverlauf",
+        "uid": "Blh9JqRRk"
+      },
+      "title": ""
+    },
+    {
+      "gridPos": {
+        "h": 3,
+        "w": 13,
+        "x": 7,
+        "y": 15
+      },
+      "id": 45,
+      "libraryPanel": {
+        "name": "Energieverteilung über Zeit",
+        "uid": "d9a5a952-0d17-428f-9102-19683b4e515f"
+      },
+      "title": ""
+    },
+    {
       "datasource": {
         "type": "datasource",
         "uid": "-- Mixed --"
       },
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -148,8 +247,7 @@
               }
             ]
           },
-          "unit": "watt",
-          "unitScale": true
+          "unit": "watt"
         },
         "overrides": [
           {
@@ -199,10 +297,10 @@
         ]
       },
       "gridPos": {
-        "h": 9,
+        "h": 14,
         "w": 20,
         "x": 0,
-        "y": 0
+        "y": 18
       },
       "id": 46,
       "options": {
@@ -257,106 +355,213 @@
           ]
         }
       ],
-      "title": "SE10K + SE17K and Sun Altitude",
+      "title": "Absolut SE10K + SE17K and Sun Altitude",
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "description": "East 11.76kWp / West 15.96kWp",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "blue",
+            "mode": "fixed"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "left",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 10
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Sun altitude"
+            },
+            "properties": [
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-yellow",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "dash": [
+                    10,
+                    10
+                  ],
+                  "fill": "dash"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "SE17K (West)"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "purple",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total"
+            },
+            "properties": [
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "dash": [
+                    10,
+                    10
+                  ],
+                  "fill": "dash"
+                }
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#8bfc92",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
       "gridPos": {
         "h": 9,
-        "w": 4,
-        "x": 20,
-        "y": 0
-      },
-      "id": 42,
-      "libraryPanel": {
-        "name": "Kennzahlen",
-        "uid": "eca51e95-5c77-486f-9dc9-dc2ce025689a"
-      },
-      "title": "Kennzahlen"
-    },
-    {
-      "gridPos": {
-        "h": 5,
-        "w": 7,
+        "w": 20,
         "x": 0,
-        "y": 9
+        "y": 32
       },
-      "id": 35,
-      "libraryPanel": {
-        "name": "PV/Netz Gauge",
-        "uid": "e6a7df33-9975-455f-b748-612244c8c186"
+      "id": 47,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
       },
-      "title": ""
-    },
-    {
-      "gridPos": {
-        "h": 15,
-        "w": 13,
-        "x": 7,
-        "y": 9
-      },
-      "id": 2,
-      "libraryPanel": {
-        "name": "PV Verbrauchsverlauf",
-        "uid": "rswX1qRRz"
-      },
-      "title": "PV Verbrauchsverlauf"
-    },
-    {
-      "gridPos": {
-        "h": 10,
-        "w": 4,
-        "x": 20,
-        "y": 9
-      },
-      "id": 40,
-      "libraryPanel": {
-        "name": "Energie",
-        "uid": "d-V6JqRgz"
-      },
-      "title": ""
-    },
-    {
-      "gridPos": {
-        "h": 5,
-        "w": 7,
-        "x": 0,
-        "y": 14
-      },
-      "id": 37,
-      "libraryPanel": {
-        "name": "Speicher/Haus/Auto Gauge",
-        "uid": "f930b616-80c3-4485-98ee-0205a64c8260"
-      },
-      "title": ""
-    },
-    {
-      "gridPos": {
-        "h": 8,
-        "w": 7,
-        "x": 0,
-        "y": 19
-      },
-      "id": 4,
-      "libraryPanel": {
-        "name": "Batterieverlauf",
-        "uid": "Blh9JqRRk"
-      },
-      "title": ""
-    },
-    {
-      "gridPos": {
-        "h": 3,
-        "w": 13,
-        "x": 7,
-        "y": 24
-      },
-      "id": 45,
-      "libraryPanel": {
-        "name": "Energieverteilung über Zeit",
-        "uid": "d9a5a952-0d17-428f-9102-19683b4e515f"
-      },
-      "title": ""
+      "targets": [
+        {
+          "alias": "SE10K (East)",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "fe0e3ffc-a3cc-4f86-b177-3c31875acf3b"
+          },
+          "query": "SELECT mean(\"value\")/11760  FROM \"pvPower\" WHERE  id = '1' AND value >0 AND $timeFilter GROUP BY time(1m) fill(none)",
+          "rawQuery": true,
+          "refId": "SE10K",
+          "resultFormat": "time_series"
+        },
+        {
+          "alias": "SE17K (West)",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "fe0e3ffc-a3cc-4f86-b177-3c31875acf3b"
+          },
+          "hide": false,
+          "query": "SELECT mean(\"value\")/ 15960 FROM \"pvPower\" WHERE  id = '2' AND value >0 AND $timeFilter GROUP BY time(1m) fill(none)",
+          "rawQuery": true,
+          "refId": "SE17K",
+          "resultFormat": "time_series"
+        },
+        {
+          "alias": "Total",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "fe0e3ffc-a3cc-4f86-b177-3c31875acf3b"
+          },
+          "hide": false,
+          "query": "SELECT mean(\"value\")/ (15960+11760) FROM \"pvPower\" WHERE  id = '' AND value >0 AND $timeFilter GROUP BY time(1m) fill(none)",
+          "rawQuery": true,
+          "refId": "SETotal",
+          "resultFormat": "time_series"
+        },
+        {
+          "datasource": {
+            "type": "fetzerch-sunandmoon-datasource",
+            "uid": "f1ca04d4-092b-4d6d-b1de-7b75e3afe5d9"
+          },
+          "hide": false,
+          "refId": "A",
+          "target": [
+            "sun_altitude"
+          ]
+        }
+      ],
+      "title": "Relativ Yield SE10K + SE17K kWh/kWp",
+      "type": "timeseries"
     }
   ],
   "refresh": "10s",
@@ -376,6 +581,6 @@
   "timezone": "",
   "title": "PV Today",
   "uid": "7Ou-Y1Rgk",
-  "version": 12,
+  "version": 18,
   "weekStart": ""
 }

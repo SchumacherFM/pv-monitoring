@@ -92,11 +92,113 @@
   "liveNow": false,
   "panels": [
     {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 20,
+            "gradientMode": "scheme",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 3,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "watth"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 24,
+      "options": {
+        "legend": {
+          "calcs": [
+            "min",
+            "max",
+            "mean",
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.3.3",
+      "targets": [
+        {
+          "alias": "Total Power",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "fe0e3ffc-a3cc-4f86-b177-3c31875acf3b"
+          },
+          "hide": false,
+          "query": "SELECT integral(\"value\")  / 3600 FROM \"pvPower\" WHERE $timeFilter AND id='' AND value>0 GROUP BY time(1d) fill(null)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series"
+        }
+      ],
+      "title": "PV Power Daily",
+      "type": "timeseries"
+    },
+    {
       "gridPos": {
         "h": 14,
         "w": 4,
         "x": 0,
-        "y": 0
+        "y": 9
       },
       "id": 19,
       "libraryPanel": {
@@ -170,8 +272,7 @@
               }
             ]
           },
-          "unit": "watth",
-          "unitScale": true
+          "unit": "watth"
         },
         "overrides": [
           {
@@ -261,7 +362,7 @@
         "h": 11,
         "w": 20,
         "x": 4,
-        "y": 0
+        "y": 9
       },
       "id": 7,
       "options": {
@@ -499,8 +600,7 @@
               }
             ]
           },
-          "unit": "watt",
-          "unitScale": true
+          "unit": "watt"
         },
         "overrides": []
       },
@@ -508,7 +608,7 @@
         "h": 6,
         "w": 20,
         "x": 4,
-        "y": 11
+        "y": 20
       },
       "id": 13,
       "options": {
@@ -588,8 +688,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -602,7 +701,7 @@
         "h": 3,
         "w": 4,
         "x": 0,
-        "y": 14
+        "y": 23
       },
       "id": 22,
       "options": {
@@ -679,7 +778,6 @@
         }
       ],
       "title": "PV Energie/kWp",
-      "transformations": [],
       "transparent": true,
       "type": "stat"
     },
@@ -688,7 +786,7 @@
         "h": 7,
         "w": 4,
         "x": 0,
-        "y": 17
+        "y": 26
       },
       "id": 21,
       "libraryPanel": {
@@ -752,8 +850,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "blue",
@@ -770,7 +867,7 @@
         "h": 6,
         "w": 20,
         "x": 4,
-        "y": 17
+        "y": 26
       },
       "id": 23,
       "options": {
@@ -982,7 +1079,7 @@
         "h": 7,
         "w": 20,
         "x": 4,
-        "y": 23
+        "y": 32
       },
       "id": 6,
       "options": {
@@ -1250,7 +1347,7 @@
         "h": 7,
         "w": 4,
         "x": 0,
-        "y": 24
+        "y": 33
       },
       "id": 16,
       "libraryPanel": {
@@ -1363,7 +1460,7 @@
         "h": 7,
         "w": 20,
         "x": 4,
-        "y": 30
+        "y": 39
       },
       "id": 11,
       "options": {
@@ -1470,7 +1567,6 @@
         }
       ],
       "title": "Hausspeicher Stände",
-      "transformations": [],
       "type": "timeseries"
     }
   ],
@@ -1491,6 +1587,6 @@
   "timezone": "",
   "title": "PV Monat",
   "uid": "4iQda7igz",
-  "version": 7,
+  "version": 9,
   "weekStart": ""
 }
