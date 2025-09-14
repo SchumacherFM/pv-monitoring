@@ -25,3 +25,9 @@ done
 
 # nochmals messen
 #du -sh /var/lib/prometheus/
+
+
+curl -X POST -g 'http://192.168.0.102:9090/api/v1/admin/tsdb/delete_series?match[]=mbmd_measurement_energy_exported_total%7Bdevice_name%3D%22se17kpv%22%7D&start=2024-05-23T08:53:00Z&end=2024-05-23T09:20:00Z'
+curl -X POST -g 'http://192.168.0.102:9090/api/v1/admin/tsdb/delete_series?match[]=mbmd_measurement_energy_exported_total%7Bdevice_name%3D%22se10kpv%22%7D&start=2024-06-12T18:44:00Z&end=2024-06-12T18:53:43Z'
+
+curl 'http://192.168.0.102:9090/api/v1/query_range?query=mbmd_measurement_energy_exported_total%7Bdevice_name%3D%22se17kpv%22%7D&start=2024-05-23T08:53:00Z&end=2024-05-23T09:24:00Z&step=15s'

@@ -1,0 +1,171 @@
+---
+modules:
+  shelly1pm:
+    metrics:
+      - name: switch_0_apower
+        path: '{ .switch:0.apower }'
+        help: Switch 0 apower
+        valuetype: gauge
+        epochtimestamp: '{ .sys.unixtime }'
+        labels:
+          device: '{.sys.mac}'
+      - name: switch_0_voltage
+        path: '{ .switch:0.voltage }'
+        help: Switch 0 voltage
+        valuetype: gauge
+        epochtimestamp: '{ .sys.unixtime }'
+        labels:
+          device: '{.sys.mac}'
+      - name: switch_0_current
+        path: '{ .switch:0.current }'
+        help: Switch 0 current
+        valuetype: gauge
+        epochtimestamp: '{ .sys.unixtime }'
+        labels:
+          device: '{.sys.mac}'
+      - name: switch_0_frq
+        path: '{ .switch:0.freq }'
+        help: Switch 0 freq
+        valuetype: gauge
+        epochtimestamp: '{ .sys.unixtime }'
+        labels:
+          device: '{.sys.mac}'
+      - name: switch_0_pf
+        path: '{ .switch:0.pf }'
+        help: Switch 0 pf
+        valuetype: gauge
+        epochtimestamp: '{ .sys.unixtime }'
+        labels:
+          device: '{.sys.mac}'
+      - name: switch_0_total_aenergy
+        path: '{ .switch:0.aenergy.total }'
+        help: Switch 0 total energy in wh
+        valuetype: counter
+        epochtimestamp: '{ .sys.unixtime }'
+        labels:
+          device: '{.sys.mac}'
+
+  shelly2pm:
+    metrics:
+      - name: switch_apower0
+        path: '{ .switch:0.apower }'
+        help: Switch 0 apower
+        valuetype: gauge
+        epochtimestamp: '{ .sys.unixtime }'
+        labels:
+          device: '{.sys.mac}'
+      - name: switch_apower1
+        path: '{ .switch:1.apower }'
+        help: Switch 1 apower
+        valuetype: gauge
+        epochtimestamp: '{ .sys.unixtime }'
+        labels:
+          device: '{.sys.mac}'
+
+      - name: switch_voltage0
+        path: '{ .switch:0.voltage }'
+        help: Switch 0 voltage
+        valuetype: gauge
+        epochtimestamp: '{ .sys.unixtime }'
+        labels:
+          device: '{.sys.mac}'
+      - name: switch_voltage1
+        path: '{ .switch:1.voltage }'
+        help: Switch 1 voltage
+        valuetype: gauge
+        epochtimestamp: '{ .sys.unixtime }'
+        labels:
+          device: '{.sys.mac}'
+
+      - name: switch_current0
+        path: '{ .switch:0.current }'
+        help: Switch 0 current
+        valuetype: gauge
+        epochtimestamp: '{ .sys.unixtime }'
+        labels:
+          device: '{.sys.mac}'
+      - name: switch_current1
+        path: '{ .switch:1.current }'
+        help: Switch 1 current
+        valuetype: gauge
+        epochtimestamp: '{ .sys.unixtime }'
+        labels:
+          device: '{.sys.mac}'
+
+      - name: switch_frq0
+        path: '{ .switch:0.freq }'
+        help: Switch 0 freq
+        valuetype: gauge
+        epochtimestamp: '{ .sys.unixtime }'
+        labels:
+          device: '{.sys.mac}'
+      - name: switch_frq1
+        path: '{ .switch:1.freq }'
+        help: Switch 1 freq
+        valuetype: gauge
+        epochtimestamp: '{ .sys.unixtime }'
+        labels:
+          device: '{.sys.mac}'
+
+      - name: switch_pf0
+        path: '{ .switch:0.pf }'
+        help: Switch 0 pf
+        valuetype: gauge
+        epochtimestamp: '{ .sys.unixtime }'
+        labels:
+          device: '{.sys.mac}'
+      - name: switch_pf1
+        path: '{ .switch:1.pf }'
+        help: Switch 1 pf
+        valuetype: gauge
+        epochtimestamp: '{ .sys.unixtime }'
+        labels:
+          device: '{.sys.mac}'
+
+      - name: switch_total_aenergy0
+        path: '{ .switch:0.aenergy.total }'
+        help: Switch 0 total energy in wh
+        valuetype: counter
+        epochtimestamp: '{ .sys.unixtime }'
+        labels:
+          device: '{.sys.mac}'
+      - name: switch_total_aenergy1
+        path: '{ .switch:1.aenergy.total }'
+        help: Switch 1 total energy in wh
+        valuetype: counter
+        epochtimestamp: '{ .sys.unixtime }'
+        labels:
+          device: '{.sys.mac}'
+
+#      - name: example_timestamped_value
+#        type: object
+#        path: '{ .values[?(@.state == 'INACTIVE')] }'
+#        epochtimestamp: '{ .timestamp }'
+#        help: Example of a timestamped value scrape in the json
+#        labels:
+#          environment: beta # static label
+#        values:
+#          count: '{.count}' # dynamic value
+#      - name: example_value
+#        type: object
+#        help: Example of sub-level value scrapes from a json
+#        path: '{.values[?(@.state == 'ACTIVE')]}'
+#        labels:
+#          environment: beta # static label
+#          id: '{.id}'       # dynamic label
+#        values:
+#          active: 1         # static value
+#          count: '{.count}' # dynamic value
+#          boolean: '{.some_boolean}'
+#
+#  animals:
+#    metrics:
+#      - name: animal
+#        type: object
+#        help: Example of top-level lists in a separate module
+#        path: '{ [*] }'
+#        labels:
+#          name: '{ .noun }'
+#          predator: '{ .predator }'
+#        values:
+#          population: '{ .population }'

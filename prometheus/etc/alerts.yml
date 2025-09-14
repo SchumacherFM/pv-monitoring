@@ -1,0 +1,23 @@
+groups:
+
+#  - name: WashTumbler
+#    interval: 2m
+#    rules:
+#
+#      - alert: TumblerFinished
+#        expr: 'delta(shelly3em_power{phase="1"}[1h]) < 0'
+#        for: 5m
+#        labels:
+#          severity: info
+#        annotations:
+#          summary: The Tumbler has finished its program
+#          description: "You can take out the clothes\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+#
+#      - alert: WashingMachineFinished
+#        expr: 'delta(shelly3em_power{phase="0"}[1h]) == 0'
+#        for: 10m
+#        labels:
+#          severity: info
+#        annotations:
+#          summary: The Washing Machine has finished its program
+#          description: "You can take out the clothes\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"

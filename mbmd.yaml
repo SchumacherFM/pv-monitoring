@@ -22,15 +22,8 @@ rate: 8s # time.Duration
 
 # adapters are referenced by device
 adapters:
-    - device: evcc:8502
+    - device: evcc:8502 #se17k
       rtu: false
-#    - device: evcc:8503 # ABBTerra
-#      rtu: false
-#- device: /dev/ttyUSB0
-#  baudrate: 9600
-#  comset: 8N1 # "8E1" needs be quoted as string or will error
-#- device: 192.168.0.7:23
-#  rtu: true # Modbus RS485 to Ethernet converter uses RTU over TCP
 
 # list of devices
 devices:
@@ -57,10 +50,6 @@ devices:
   id: 1
   subdevice: 1 # use subdevice to access SunSpec subdevices
   adapter: evcc:8502
-#- name: ABBTerra
-#  type: ABB
-#  id: 1
-#  adapter: evcc:8503
 
 prometheus:
     enable: true # enables prometheus in general
